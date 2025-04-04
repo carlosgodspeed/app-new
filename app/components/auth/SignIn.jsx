@@ -1,11 +1,23 @@
 import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity, Pressable } from 'react-native';
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import Colors from '../constant/Colors';
 import { useRouter } from 'expo-router';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../config/firebaseConfig';
 
-export default function SignUp() {
+export default function SignIn() {
 
     const router=useRouter();
+    const [email,setEmail] = useState();
+    const [password, setPassword] = useState();
+
+    const onSignInClick = () =>{
+        signInWithEmailAndPassword(auth, email, password)
+        .then(resp=>{
+            const user=resp.user
+            console,log(user);
+        })
+    }
 
 return (
     <View style={{
@@ -26,13 +38,21 @@ return (
     <Text style={{
         fontSize:30,
         fontFamily: 'outfit-bold',
-    }}>Create New Account</Text>
+    }}>Welcome Back</Text>
 
-    <TextInput placeholder='Full Name' style={styles.textInput} />
-    <TextInput placeholder='Email' style={styles.textInput} />
-    <TextInput placeholder='Password' secureTextEntry={true} style={styles.textInput} />
+    <TextInput placeholder='Email'
+    onChangeText={(value)=>setEmail(value)}
+    style={styles.textInput} 
+    />
+
+    <TextInput placeholder='Password'
+    onChangeText={(value)=>setPassword(value)}
+    secureTextEntry={true} 
+    style={styles.textInput} 
+    />
 
     <TouchableOpacity
+    onPress={onSignInClick}
     style={{
         padding:15,
         backgroundColor:Colors.PRIMARY,
@@ -46,7 +66,7 @@ return (
         fontSize:20,
         color:Colors.WHITE,
         textAlign:'center',
-        }}>Create Account</Text>
+        }}>Sign In</Text>
         
         </TouchableOpacity>
 
@@ -59,14 +79,14 @@ return (
         }}>
         <Text style={{
             fontFamily:'outfit',
-        }}>Already have Account?</Text>
+        }}>Don't have an Account?</Text>
         <Pressable
-        onPress={()=> router.push('/components/auth/SignIn')}
+        onPress={()=> router.push('/components/auth/SignUp')}
         >
             <Text style={{
                 color:Colors.PRIMARY,
                 fontFamily:'outfit-bold',
-            }}>Sign In Here</Text>
+            }}>Create New Here</Text>
         </Pressable>
         </View>
     </View>
