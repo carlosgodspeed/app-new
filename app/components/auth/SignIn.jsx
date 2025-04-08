@@ -28,7 +28,7 @@ return (
         padding:25,
         backgroundColor:Colors.WHITE,
     }}>
-    <Image source={require('./../../assets/images/logo.png')}
+    <Image source={require('./../../assets/images/Login.png')}
     style={{
         width:180,
         height:180,
@@ -38,14 +38,14 @@ return (
     <Text style={{
         fontSize:30,
         fontFamily: 'outfit-bold',
-    }}>Welcome Back</Text>
+    }}>Bem Vindo</Text>
 
     <TextInput placeholder='Email'
     onChangeText={(value)=>setEmail(value)}
     style={styles.textInput} 
     />
 
-    <TextInput placeholder='Password'
+    <TextInput placeholder='Senha'
     onChangeText={(value)=>setPassword(value)}
     secureTextEntry={true} 
     style={styles.textInput} 
@@ -66,7 +66,7 @@ return (
         fontSize:20,
         color:Colors.WHITE,
         textAlign:'center',
-        }}>Sign In</Text>
+        }}>Login</Text>
         
         </TouchableOpacity>
 
@@ -79,14 +79,14 @@ return (
         }}>
         <Text style={{
             fontFamily:'outfit',
-        }}>Don't have an Account?</Text>
+        }}>Não Possui uma Conta?</Text>
         <Pressable
         onPress={()=> router.push('/components/auth/SignUp')}
         >
             <Text style={{
                 color:Colors.PRIMARY,
                 fontFamily:'outfit-bold',
-            }}>Create New Here</Text>
+            }}>Criar Conta</Text>
         </Pressable>
         </View>
     </View>
@@ -102,5 +102,6 @@ const styles = StyleSheet.create({
         marginTop:20,
         borderRadius:8,
         fontFamily:'outfit-bold',
+        backgroundColor:'#313131',
     }
 })

@@ -33,7 +33,7 @@ export default function Index() {
           textAlign: 'center',
           color: Colors.WHITE,
           fontFamily:'outfit-bold',
-        }}>Welcome to Coaching Guru</Text>
+        }}>Bem Vindo ao App de Química</Text>
 
         <Text style={{
           fontSize:20,
@@ -41,12 +41,12 @@ export default function Index() {
           marginTop:20,
           textAlign:'center',
           fontFamily:'outfit'
-        }}>Transforme suas ideias em conteúdo educacional envolvente, sem esforço com IA</Text>
+        }}>Tenha Acesso a Conteudo dedicado para Estudantes de Química</Text>
 
         <TouchableOpacity style={styles.button}
           onPress={() => router.push('/components/auth/SignUp')}
         >
-          <Text style={[styles.ButtonText,{ color: Colors.PRIMARY }]}>Get Started</Text>
+          <Text style={[styles.ButtonText,{ color: Colors.PRIMARY }]}>Cadastre-se</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => router.push('/components/auth/SignIn')} style={[styles.button, {
@@ -54,7 +54,7 @@ export default function Index() {
           borderWidth: 1,
           borderColor:Colors.WHITE,
           }]}>
-          <Text style={[styles.ButtonText, { color: Colors.WHITE }]}>Already have account</Text>
+          <Text style={[styles.ButtonText, { color: Colors.WHITE }]}>Login</Text>
         </TouchableOpacity>
 
       </View>

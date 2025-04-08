@@ -48,7 +48,7 @@ return (
         padding:25,
         backgroundColor:Colors.WHITE,
     }}>
-    <Image source={require('./../../assets/images/logo.png')}
+    <Image source={require('./../../assets/images/newAcount.png')}
     style={{
         width:180,
         height:180,
@@ -58,11 +58,11 @@ return (
     <Text style={{
         fontSize:30,
         fontFamily: 'outfit-bold',
-    }}>Create New Account</Text>
+    }}>Cadastre-se</Text>
 
-    <TextInput placeholder='Full Name' onChangeText={(value)=>setFullName(value)} style={styles.textInput} />
+    <TextInput placeholder='Nome Completo' onChangeText={(value)=>setFullName(value)} style={styles.textInput} />
     <TextInput placeholder='Email' onChangeText={(value)=>setEmail(value)} style={styles.textInput} />
-    <TextInput placeholder='Password' onChangeText={(value)=>setPassword(value)} secureTextEntry={true} style={styles.textInput} />
+    <TextInput placeholder='Senha' onChangeText={(value)=>setPassword(value)} secureTextEntry={true} style={styles.textInput} />
 
     <TouchableOpacity
     onPress={CreateNewAccount}
@@ -79,7 +79,7 @@ return (
         fontSize:20,
         color:Colors.WHITE,
         textAlign:'center',
-        }}>Create Account</Text>
+        }}>Criar</Text>
         
         </TouchableOpacity>
 
@@ -92,14 +92,14 @@ return (
         }}>
         <Text style={{
             fontFamily:'outfit',
-        }}>Already have Account?</Text>
+        }}>Já Possui uma Conta?</Text>
         <Pressable
         onPress={()=> router.push('/components/auth/SignIn')}
         >
             <Text style={{
                 color:Colors.PRIMARY,
                 fontFamily:'outfit-bold',
-            }}>Sign In Here</Text>
+            }}>Login</Text>
         </Pressable>
         </View>
     </View>
@@ -115,5 +115,6 @@ const styles = StyleSheet.create({
         marginTop:20,
         borderRadius:8,
         fontFamily:'outfit-bold',
+        backgroundColor:'#313131',
     }
 })
