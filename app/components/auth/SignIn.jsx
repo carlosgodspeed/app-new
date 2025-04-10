@@ -1,4 +1,4 @@
-import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity, Pressable } from 'react-native';
+import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity, Pressable, ToastAndroid } from 'react-native';
 import React, { useState, useContext } from 'react';
 import Colors from '../constant/Colors';
 import { useRouter } from 'expo-router';
@@ -11,12 +11,21 @@ export default function SignIn() {
     const [email,setEmail] = useState();
     const [password, setPassword] = useState();
 
-    const onSignInClick = () =>{
+    const onSignInClick = () => {
         signInWithEmailAndPassword(auth, email, password)
-        .then(resp=>{
-            const user=resp.user
-            console,log(user);
-        })
+            .then(async(resp)=> {
+                const user=resp.user
+                console.log(user)
+                await getUserDetail();
+            }).catch( erro => {
+                console.log(erro)
+                ToastAndroid.show('Email e Senha Incorretos',ToastAndroid.BOTTOM)
+            })
+    }
+
+    const getUserDetail = async () =>{
+        const result = await getDoc( doc ( db,'users',email ));
+        console.log(result.data())
     }
 
 return (
