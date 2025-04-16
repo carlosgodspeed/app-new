@@ -1,31 +1,38 @@
-import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity, Pressable, ToastAndroid } from 'react-native';
+import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity, Pressable, ToastAndroid, ActivityIndicator } from 'react-native';
 import React, { useState, useContext } from 'react';
 import Colors from '../constant/Colors';
 import { useRouter } from 'expo-router';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../config/firebaseConfig';
+import { UserDetailContext } from '../context/UserDetailContext';
 
 export default function SignIn() {
 
     const router=useRouter();
     const [email,setEmail] = useState();
     const [password, setPassword] = useState();
+    const {userDetail,setUserDetail} = useContext(UserDetailContext);
+    const [loading,setLoading] = useState(false);
 
     const onSignInClick = () => {
+        setLoading(true)
         signInWithEmailAndPassword(auth, email, password)
             .then(async(resp)=> {
                 const user=resp.user
                 console.log(user)
                 await getUserDetail();
+                setLoading(false);
             }).catch( erro => {
                 console.log(erro)
-                ToastAndroid.show('Email e Senha Incorretos',ToastAndroid.BOTTOM)
+                setLoading(false);
+                ToastAndroid.show('Email ou Senha Incorretos',ToastAndroid.BOTTOM)
             })
     }
 
     const getUserDetail = async () =>{
         const result = await getDoc( doc ( db,'users',email ));
-        console.log(result.data())
+        console.log(result.data());
+        setUserDetail(result.data());
     }
 
 return (
@@ -70,12 +77,14 @@ return (
         borderRadius:10,
     }}
     >
-        <Text style={{
+    {!loading?    <Text style={{
         fontFamily:'outfit',
         fontSize:20,
         color:Colors.WHITE,
         textAlign:'center',
-        }}>Login</Text>
+        }}>Login</Text>:
+            <ActivityIndicator size={'large'} color={Colors.WHITE} />
+    }
         
         </TouchableOpacity>
 
