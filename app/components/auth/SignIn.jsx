@@ -22,6 +22,7 @@ export default function SignIn() {
                 console.log(user)
                 await getUserDetail();
                 setLoading(false);
+                router.replace('/(tabs)/home')
             }).catch( erro => {
                 console.log(erro)
                 setLoading(false);
@@ -69,6 +70,7 @@ return (
 
     <TouchableOpacity
     onPress={onSignInClick}
+    disabled={loading}
     style={{
         padding:15,
         backgroundColor:Colors.PRIMARY,
@@ -77,13 +79,13 @@ return (
         borderRadius:10,
     }}
     >
-    {!loading?    <Text style={{
+    {!loading?<Text style={{
         fontFamily:'outfit',
         fontSize:20,
         color:Colors.WHITE,
         textAlign:'center',
         }}>Login</Text>:
-            <ActivityIndicator size={'large'} color={Colors.WHITE} />
+        <ActivityIndicator size={'large'} color={Colors.WHITE} />
     }
         
         </TouchableOpacity>
