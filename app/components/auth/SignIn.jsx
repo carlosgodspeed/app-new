@@ -22,7 +22,7 @@ export default function SignIn() {
                 console.log(user)
                 await getUserDetail();
                 setLoading(false);
-                router.replace('/(tabs)/home')
+                router.replace("/components/(tabs)/home")
             }).catch( erro => {
                 console.log(erro)
                 setLoading(false);
