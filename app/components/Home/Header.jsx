@@ -7,11 +7,12 @@ export default function Header() {
 
     const { userDetail, setUserDetail } = useContext(UserDetailContext);
 
-    console.log("userDetail no Header:", userDetail);
-
     return (
         <View style={{
             display:'flex',
+            flexDirection:'row',
+            justifyContent:'space-between',
+            alignItems:'center'
         }}>
             <View>
                 <Text style={{
@@ -26,7 +27,7 @@ export default function Header() {
                 }}>Let's Get Started</Text>
             </View>
             <TouchableOpacity>
-            <Ionicons name="settings-outline" size={24} color="black"/>
+            <Ionicons name="settings-outline" size={32} color="black"/>
             </TouchableOpacity>
         </View>
     )
