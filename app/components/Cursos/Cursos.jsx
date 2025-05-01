@@ -14,7 +14,11 @@ export default function Cursos() {
             width:200,
         }}
         />
-        <Text> Você não tem Nenhum Curso</Text>
+        <Text style={{
+          fontFamily:'outfit-bold',
+          fontSize:25,
+          textAlign:'center'
+        }}> Você não tem Nenhum Curso</Text>
     </View>
   )
 }
